@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء صور نموذجية للمنتجات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: inline-block;
+            width: 300px;
+            text-align: center;
+        }
+        .product-image {
+            width: 280px;
+            height: 200px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .download-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .download-btn:hover {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <h1>إنشاء صور نموذجية للمنتجات</h1>
+    <p>يمكنك حفظ هذه الصور واستخدامها في المتجر:</p>
+    
+    <div class="product-card">
+        <canvas id="canvas1" width="280" height="200" class="product-image"></canvas>
+        <h3>BAS DE CONTENTION ET VARICE</h3>
+        <button class="download-btn" onclick="downloadImage('canvas1', 'bas-contention.jpg')">تحميل الصورة</button>
+    </div>
+
+    <div class="product-card">
+        <canvas id="canvas2" width="280" height="200" class="product-image"></canvas>
+        <h3>COLLIER CERVICAL</h3>
+        <button class="download-btn" onclick="downloadImage('canvas2', 'collier-cervical.jpg')">تحميل الصورة</button>
+    </div>
+
+    <div class="product-card">
+        <canvas id="canvas3" width="280" height="200" class="product-image"></canvas>
+        <h3>CEINTURE LOMBAIRE</h3>
+        <button class="download-btn" onclick="downloadImage('canvas3', 'ceinture-lombaire.jpg')">تحميل الصورة</button>
+    </div>
+
+    <div class="product-card">
+        <canvas id="canvas4" width="280" height="200" class="product-image"></canvas>
+        <h3>GENOUILLERE</h3>
+        <button class="download-btn" onclick="downloadImage('canvas4', 'genouillere.jpg')">تحميل الصورة</button>
+    </div>
+
+    <script>
+        // قائمة المنتجات
+        const products = [
+            { id: 'canvas1', name: 'BAS DE CONTENTION\nET VARICE', color: '#ef4444' },
+            { id: 'canvas2', name: 'COLLIER\nCERVICAL', color: '#dc2626' },
+            { id: 'canvas3', name: 'CEINTURE\nLOMBAIRE', color: '#b91c1c' },
+            { id: 'canvas4', name: 'GENOUILLERE', color: '#991b1b' }
+        ];
+
+        // إنشاء الصور
+        products.forEach(product => {
+            const canvas = document.getElementById(product.id);
+            const ctx = canvas.getContext('2d');
+            
+            // خلفية متدرجة
+            const gradient = ctx.createLinearGradient(0, 0, 280, 200);
+            gradient.addColorStop(0, product.color);
+            gradient.addColorStop(1, '#7f1d1d');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 280, 200);
+            
+            // إضافة النص
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 18px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            const lines = product.name.split('\n');
+            const lineHeight = 25;
+            const startY = 100 - (lines.length - 1) * lineHeight / 2;
+            
+            lines.forEach((line, index) => {
+                ctx.fillText(line, 140, startY + index * lineHeight);
+            });
+            
+            // إضافة شعار Variteks
+            ctx.font = 'bold 12px Arial';
+            ctx.fillText('Variteks Algeria', 140, 180);
+        });
+
+        // دالة تحميل الصورة
+        function downloadImage(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        }
+    </script>
+</body>
+</html>

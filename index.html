@@ -1,0 +1,3416 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variteks Algérie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        /* تحسينات الشعار */
+        .logo-container {
+            transition: all 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-logo {
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* تحسين responsive للشعار */
+        @media (max-width: 768px) {
+            .logo-text {
+                display: none;
+            }
+        }
+
+        /* خلفية Hero Section مع الصورة */
+        .hero-background {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.85), rgba(185, 28, 28, 0.85)),
+                        url('logo/499696098_1531647108098932_4913304335063675643_n.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* تأثير parallax للموبايل */
+        @media (max-width: 768px) {
+            .hero-background {
+                background-attachment: scroll;
+            }
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(239, 68, 68, 0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* تأثيرات إضافية للنص */
+        .hero-title {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-button {
+            animation: fadeInUp 1s ease-out 0.6s both;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* تحسين الشعار في Hero */
+        .hero-logo-container {
+            animation: fadeInDown 1s ease-out;
+        }
+
+        /* تحسينات الإحصائيات */
+        .stat-item {
+            animation: fadeInUp 1s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* تحسينات بطاقات المميزات */
+        .feature-card {
+            animation: fadeInUp 1s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تحسينات شهادات العملاء */
+        .testimonial-card {
+            animation: fadeInUp 1s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* تحسينات البحث والفلترة */
+        .search-filter-bar {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* تأثيرات التحميل */
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ef4444;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* تحسينات التابات */
+        .category-tab {
+            background: #f3f4f6;
+            color: #6b7280;
+            border: 2px solid transparent;
+        }
+
+        .category-tab:hover {
+            background: #fee2e2;
+            color: #dc2626;
+            border-color: #fecaca;
+        }
+
+        .category-tab.active {
+            background: #ef4444;
+            color: white;
+            border-color: #dc2626;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        /* تحسينات responsive إضافية */
+        @media (max-width: 640px) {
+            .stat-item {
+                margin-bottom: 2rem;
+            }
+
+            .feature-card, .testimonial-card {
+                margin-bottom: 1.5rem;
+            }
+
+            .category-tab {
+                font-size: 0.875rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        /* تحسينات بطاقات المنتجات */
+        .product-card {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-badge {
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .quick-view-btn {
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .price-container {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .price-range {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            border: 2px solid #22c55e;
+        }
+
+        .price-range::before {
+            content: "نطاق سعري";
+            position: absolute;
+            top: -8px;
+            right: 8px;
+            background: #22c55e;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .stock-indicator {
+            animation: pulse 2s infinite;
+        }
+
+        /* تأثيرات الخط */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* تحسينات Toast */
+        .toast {
+            min-width: 300px;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .toast.error {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .toast.info {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        /* تحسينات الشبكة */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        /* تأثيرات التحميل */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* تحسينات أزرار العرض */
+        .view-btn {
+            color: #6b7280;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn:hover {
+            color: #ef4444;
+            background: white;
+        }
+
+        .view-btn.active {
+            color: white;
+            background: #ef4444;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+        }
+
+        /* عرض القائمة */
+        .list-view .products-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .list-view .product-card {
+            display: flex;
+            flex-direction: row;
+            max-width: none;
+            height: 200px;
+        }
+
+        .list-view .product-card img {
+            width: 200px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .list-view .product-card .p-6 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* تأثيرات الانتقال */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* تحسينات الفلترة */
+        .filter-active {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        /* ===== HEADER STYLES ===== */
+        .header-modern {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(239, 68, 68, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-modern.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Logo Styles */
+        .logo-section {
+            transition: all 0.3s ease;
+        }
+
+        .logo-section:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .logo-wrapper img {
+            border-radius: 50%;
+            background: white;
+            padding: 2px;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-subtitle {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Navigation Styles */
+        .nav-menu {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            color: #6b7280;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .nav-icon {
+            margin-left: 0.5rem;
+            font-size: 0.875rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover .nav-icon {
+            transform: scale(1.2);
+        }
+
+        /* Action Buttons */
+        .action-btn {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .action-btn:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .action-btn:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Cart Badge */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-pulse {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fbbf24;
+            opacity: 0;
+            animation: cartPulse 2s infinite;
+        }
+
+        @keyframes cartPulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        /* Hamburger Menu */
+        .hamburger-line {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: currentColor;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Search Bar */
+        .search-bar-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(239, 68, 68, 0.1);
+            animation: slideDown 0.3s ease;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1rem;
+            border: 2px solid rgba(239, 68, 68, 0.2);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #ef4444;
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+        }
+
+        .search-submit, .search-close {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .search-submit {
+            right: 1rem;
+        }
+
+        .search-close {
+            right: 3rem;
+        }
+
+        .search-submit:hover, .search-close:hover {
+            background: rgba(239, 68, 68, 0.1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-container {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+
+        .mobile-menu-container.active {
+            right: 0;
+        }
+
+        .mobile-menu-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 1.5rem 1rem;
+            border-bottom: 1px solid rgba(239, 68, 68, 0.1);
+        }
+
+        .mobile-menu-header h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .mobile-menu-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-close:hover {
+            background: #ef4444;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .mobile-nav {
+            flex: 1;
+            padding: 1rem 0;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            color: #4b5563;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(239, 68, 68, 0.05);
+        }
+
+        .mobile-nav-link:hover {
+            background: rgba(239, 68, 68, 0.05);
+            color: #ef4444;
+            padding-right: 2rem;
+        }
+
+        .mobile-nav-link i:first-child {
+            width: 20px;
+            text-align: center;
+        }
+
+        .mobile-nav-link i:last-child {
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-link:hover i:last-child {
+            transform: translateX(-5px);
+        }
+
+        .mobile-menu-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(239, 68, 68, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #ef4444;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Language Button Styles */
+        .lang-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .lang-btn:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .lang-btn:hover {
+            color: white;
+        }
+
+        .lang-btn span {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* RTL/LTR Support */
+        [dir="ltr"] .mr-1 { margin-right: 0.25rem; margin-left: 0; }
+        [dir="ltr"] .ml-1 { margin-left: 0.25rem; margin-right: 0; }
+        [dir="ltr"] .ml-2 { margin-left: 0.5rem; margin-right: 0; }
+        [dir="ltr"] .text-right { text-align: left; }
+        [dir="ltr"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(var(--tw-space-x) * var(--tw-space-x-reverse));
+            margin-left: calc(var(--tw-space-x) * calc(1 - var(--tw-space-x-reverse)));
+        }
+
+        /* Contact Buttons Styles */
+        .contact-btn {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            opacity: 0.3;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-btn:hover::before {
+            transform: scale(1.2);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .whatsapp-btn:hover {
+            background: linear-gradient(135deg, #128C7E, #075E54);
+        }
+
+        /* Viber Button */
+        .viber-btn {
+            background: linear-gradient(135deg, #665CAC, #59529D);
+        }
+
+        .viber-btn:hover {
+            background: linear-gradient(135deg, #59529D, #4A4284);
+        }
+
+        /* Back to Top Button */
+        .back-to-top-btn {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            transition: all 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .back-to-top-btn:hover {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+
+        .back-to-top-btn.show {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* Tooltip Styles */
+        .contact-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .contact-tooltip::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 6px solid transparent;
+            border-left-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .contact-btn:hover .contact-tooltip {
+            opacity: 1;
+            visibility: visible;
+            right: 75px;
+        }
+
+        .tooltip-text {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .tooltip-number {
+            display: block;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .viber-btn {
+            animation: pulseViber 2s infinite;
+        }
+
+        @keyframes pulseViber {
+            0% {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(102, 92, 172, 0.7);
+            }
+            70% {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 10px rgba(102, 92, 172, 0);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(102, 92, 172, 0);
+            }
+        }
+
+        /* Contact Button Click Effects */
+        .contact-btn:active {
+            transform: translateY(-3px) scale(0.95);
+        }
+
+        .whatsapp-btn:active {
+            background: linear-gradient(135deg, #075E54, #128C7E);
+        }
+
+        .viber-btn:active {
+            background: linear-gradient(135deg, #4A4284, #59529D);
+        }
+
+        .back-to-top-btn:active {
+            background: linear-gradient(135deg, #b91c1c, #dc2626);
+        }
+
+        /* Floating Animation */
+        .contact-btn {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .whatsapp-btn {
+            animation-delay: 0s;
+        }
+
+        .viber-btn {
+            animation-delay: 0.5s;
+        }
+
+        .back-to-top-btn {
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .contact-btn {
+                width: 50px;
+                height: 50px;
+            }
+
+            .contact-tooltip {
+                right: 60px;
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
+
+            .contact-btn:hover .contact-tooltip {
+                right: 65px;
+            }
+
+            /* Disable hover effects on mobile */
+            .contact-btn:hover {
+                transform: translateY(0) scale(1);
+            }
+
+            .contact-btn:hover::before {
+                transform: scale(0);
+            }
+        }
+
+
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header -->
+    <header class="header-modern fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo Section -->
+                <a href="#" class="logo-section flex items-center space-x-3 space-x-reverse">
+                    <div class="logo-wrapper">
+                        <img src="logo/277738148_664779944785657_6678405579310412978_n.png" alt="Variteks Algeria Logo" class="h-12 w-auto object-contain">
+                    </div>
+                    <div class="logo-text-wrapper">
+                        <span class="logo-title">Variteks</span>
+                        <span class="logo-subtitle">Algeria</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Menu -->
+                <nav class="nav-menu hidden lg:flex items-center space-x-8 space-x-reverse">
+                    <a href="#home" class="nav-link active">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                    <a href="#about" class="nav-link">
+                        <i class="fas fa-info-circle nav-icon"></i>
+                        <span>نبذة عنا</span>
+                    </a>
+                    <a href="#products" class="nav-link">
+                        <i class="fas fa-box-open nav-icon"></i>
+                        <span>المنتجات</span>
+                    </a>
+                    <a href="#contact" class="nav-link">
+                        <i class="fas fa-envelope nav-icon"></i>
+                        <span>اتصل بنا</span>
+                    </a>
+                </nav>
+
+                <!-- Action Buttons -->
+                <div class="header-actions flex items-center space-x-4 space-x-reverse">
+                    <!-- Search Button -->
+                    <button id="search-toggle" class="action-btn search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                    <!-- Cart Button -->
+                    <button id="cart-button" class="action-btn cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                        <span class="cart-pulse"></span>
+                    </button>
+
+
+
+                    <!-- Language Toggle -->
+                    <button class="action-btn lang-btn" onclick="switchLanguage()">
+                        <i class="fas fa-globe"></i>
+                        <span class="hidden md:inline mr-1">AR</span>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="menu-button" class="action-btn mobile-menu-btn lg:hidden">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div id="search-bar" class="search-bar-container hidden">
+            <div class="container mx-auto px-4 py-4">
+                <div class="relative max-w-2xl mx-auto">
+                    <input type="text" id="header-search" placeholder="ابحث عن المنتجات..." class="search-input">
+                    <button class="search-submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button id="search-close" class="search-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu-container lg:hidden">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <h3>القائمة الرئيسية</h3>
+                    <button id="mobile-menu-close" class="mobile-menu-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <nav class="mobile-nav">
+                    <a href="#home" class="mobile-nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <a href="#about" class="mobile-nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>نبذة عنا</span>
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <a href="#products" class="mobile-nav-link">
+                        <i class="fas fa-box-open"></i>
+                        <span>المنتجات</span>
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <a href="#contact" class="mobile-nav-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>اتصل بنا</span>
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </nav>
+                <div class="mobile-menu-footer">
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative hero-background text-white py-20 md:py-32 flex items-center justify-center min-h-screen">
+            <!-- عناصر زخرفية -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-10 left-10 w-20 h-20 border-2 border-white opacity-20 rounded-full animate-pulse"></div>
+                <div class="absolute top-32 right-16 w-16 h-16 border-2 border-white opacity-30 rounded-full animate-bounce"></div>
+                <div class="absolute bottom-20 left-20 w-12 h-12 border-2 border-white opacity-25 rounded-full animate-ping"></div>
+                <div class="absolute bottom-32 right-32 w-24 h-24 border-2 border-white opacity-15 rounded-full animate-pulse"></div>
+            </div>
+            <div class="container mx-auto px-4 text-center hero-content">
+                <!-- Logo في Hero Section -->
+                <div class="mb-8 flex justify-center hero-logo-container">
+                    <div class="bg-white rounded-full p-6 shadow-2xl transform hover:scale-105 transition-transform duration-300 hero-logo">
+                        <img src="logo/277738148_664779944785657_6678405579310412978_n.png" alt="Variteks Algeria Logo" class="h-20 md:h-32 w-auto object-contain">
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 hero-title">
+                    Vous êtes entre de bonnes mains
+                </h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto hero-subtitle">
+                    Variteks est une large gamme riche et variée de produits orthopédiques parapharmaceutiques, d'origine Turque, active dans le commerce médical mondial depuis 1958.
+                </p>
+                <a href="#products" class="mt-8 inline-block bg-white text-red-600 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-200 transition-colors duration-300 hero-button">اكتشف منتجاتنا</a>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="bg-gradient-to-r from-red-600 to-red-800 py-16 text-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="stat-item">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="63">0</div>
+                        <p class="text-red-100">منتجات Variteks2</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="14">0</div>
+                        <p class="text-red-100">منتجات Lipo</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="2">0</div>
+                        <p class="text-red-100">منتجات Variteks</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="79">0</div>
+                        <p class="text-red-100">إجمالي المنتجات</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="bg-white py-16 md:py-24">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">نبذة عنا</h2>
+                <div class="max-w-4xl mx-auto mb-12">
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Variteks هي علامة تجارية عالمية في مجال المنتجات الطبية وشبه الصيدلانية، وتعمل منذ عام 1958 لتقديم أفضل المنتجات الأورثوبيدية. نحن نلتزم بالجودة العالية والابتكار لتوفير حلول فعالة لعملائنا في الجزائر.
+                    </p>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="feature-card bg-gray-50 p-8 rounded-xl text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-medal text-red-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">جودة عالمية</h3>
+                        <p class="text-gray-600">منتجات معتمدة دولياً بأعلى معايير الجودة</p>
+                    </div>
+
+                    <div class="feature-card bg-gray-50 p-8 rounded-xl text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shipping-fast text-red-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">توصيل سريع</h3>
+                        <p class="text-gray-600">خدمة توصيل سريعة وآمنة لجميع أنحاء الجزائر</p>
+                    </div>
+
+                    <div class="feature-card bg-gray-50 p-8 rounded-xl text-center hover:shadow-lg transition-shadow duration-300">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-headset text-red-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">دعم 24/7</h3>
+                        <p class="text-gray-600">فريق دعم متخصص متاح على مدار الساعة</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="bg-gray-100 py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">منتجاتنا</h2>
+
+                <!-- Search and Filter Bar -->
+                <div class="max-w-4xl mx-auto mb-12">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <!-- Search Input -->
+                            <div class="flex-1">
+                                <div class="relative">
+                                    <input type="text" id="search-input" placeholder="ابحث عن المنتجات..."
+                                           class="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                                    <i class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                                </div>
+                            </div>
+
+                            <!-- Category Filter -->
+                            <div class="md:w-64">
+                                <select id="category-filter" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                                    <option value="">جميع الأصناف</option>
+                                    <option value="variteks2">Variteks2 - الكتالوج الرئيسي</option>
+                                    <option value="variteks-lipo">Variteks Lipo - شفط الدهون</option>
+                                    <option value="variteks">Variteks - منتجات إضافية</option>
+                                </select>
+                            </div>
+
+                            <!-- Price Filter -->
+                            <div class="md:w-48">
+                                <select id="price-filter" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                                    <option value="">جميع الأسعار</option>
+                                    <option value="0-2000">أقل من 2000 دج</option>
+                                    <option value="2000-5000">2000 - 5000 دج</option>
+                                    <option value="5000-10000">5000 - 10000 دج</option>
+                                    <option value="10000+">أكثر من 10000 دج</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="flex flex-wrap justify-center mb-8 bg-white rounded-lg shadow-lg p-2">
+                    <button id="tab-all" class="category-tab active px-6 py-3 mx-1 mb-2 rounded-lg font-bold transition-all duration-300">
+                        جميع المنتجات (79)
+                    </button>
+                    <button id="tab-variteks2" class="category-tab px-6 py-3 mx-1 mb-2 rounded-lg font-bold transition-all duration-300">
+                        Variteks2 (63)
+                    </button>
+                    <button id="tab-variteks-lipo" class="category-tab px-6 py-3 mx-1 mb-2 rounded-lg font-bold transition-all duration-300">
+                        Variteks Lipo (14)
+                    </button>
+                    <button id="tab-variteks" class="category-tab px-6 py-3 mx-1 mb-2 rounded-lg font-bold transition-all duration-300">
+                        Variteks (2)
+                    </button>
+                </div>
+
+                <!-- Sort Options -->
+                <div class="flex flex-wrap items-center justify-between mb-6 bg-white rounded-lg shadow-lg p-4">
+                    <div class="flex items-center space-x-4 space-x-reverse mb-2 md:mb-0">
+                        <span class="text-gray-700 font-medium">ترتيب حسب:</span>
+                        <select id="sort-options" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                            <option value="default">الافتراضي</option>
+                            <option value="price-low">السعر: من الأقل للأعلى</option>
+                            <option value="price-high">السعر: من الأعلى للأقل</option>
+                            <option value="name">الاسم: أ-ي</option>
+                            <option value="category">الفئة</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <span class="text-gray-700 font-medium">العرض:</span>
+                        <div class="flex bg-gray-100 rounded-lg p-1">
+                            <button id="grid-view" class="view-btn active px-3 py-1 rounded-md transition-all duration-300">
+                                <i class="fas fa-th-large"></i>
+                            </button>
+                            <button id="list-view" class="view-btn px-3 py-1 rounded-md transition-all duration-300">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="product-list" class="products-grid">
+                    <!-- Product Cards will be injected by JavaScript -->
+                </div>
+
+                <!-- No Results Message -->
+                <div id="no-results" class="hidden text-center py-12">
+                    <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-600 mb-2">لم يتم العثور على منتجات</h3>
+                    <p class="text-gray-500">جرب البحث بكلمات مختلفة أو تغيير الفلاتر</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="bg-gradient-to-br from-gray-50 to-gray-100 py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12 testimonials-title">آراء عملائنا</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user text-red-600"></i>
+                            </div>
+                            <div class="mr-4">
+                                <h4 class="font-bold text-gray-800 customer1-name">أحمد محمد</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic customer1-review">"منتجات عالية الجودة وخدمة ممتازة. أنصح بها بشدة لكل من يحتاج منتجات طبية موثوقة."</p>
+                    </div>
+
+                    <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user text-red-600"></i>
+                            </div>
+                            <div class="mr-4">
+                                <h4 class="font-bold text-gray-800 customer2-name">فاطمة علي</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic customer2-review">"التوصيل سريع والمنتجات أصلية. تعاملت معهم عدة مرات وكانت التجربة رائعة في كل مرة."</p>
+                    </div>
+
+                    <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user text-red-600"></i>
+                            </div>
+                            <div class="mr-4">
+                                <h4 class="font-bold text-gray-800 customer3-name">يوسف حسن</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic customer3-review">"أسعار معقولة وجودة ممتازة. فريق الدعم متعاون جداً ويساعد في اختيار المنتج المناسب."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">اتصل بنا</h2>
+                <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12 md:space-x-reverse space-y-8 md:space-y-0">
+                    <div class="bg-red-600 text-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+                        <h3 class="text-2xl font-bold mb-4">معلومات الاتصال</h3>
+                        <p class="flex items-center mb-2">
+                            <svg class="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            02 Rue Amar Zaggat Kouba -ALGER
+                        </p>
+                        <p class="flex items-center mb-2">
+                            <svg class="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.293 1.147a1 1 0 00-.45 1.704l.793.793a4.002 4.002 0 006.002 0l.793-.793a1 1 0 00.45-1.704l-2.293-1.147a1 1 0 01-.502-1.21l1.498-4.493A1 1 0 0118.72 3H20a2 2 0 012 2v16a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path></svg>
+                            + 213 0555 00 26 87
+                        </p>
+                        <p class="flex items-center mb-2">
+                            <svg class="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            Sarl.orthopharm@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-lg w-full m-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">سلة المشتريات</h3>
+                <button id="close-cart-button" class="text-gray-500 hover:text-gray-800 focus:outline-none">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="space-y-4 max-h-80 overflow-y-auto">
+                <!-- Cart items will be rendered here -->
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-200">
+                <div class="flex justify-between items-center text-xl font-bold mb-4">
+                    <span>الإجمالي:</span>
+                    <span id="cart-total">0.00 دج</span>
+                </div>
+                <button id="checkout-button" class="w-full bg-red-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-red-700 transition-colors duration-300">
+                    إتمام الشراء
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal for Customer Information -->
+    <div id="checkout-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-lg w-full m-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">معلومات الزبون</h3>
+                <button id="close-checkout-button" class="text-gray-500 hover:text-gray-800 focus:outline-none">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <form id="customer-form" class="space-y-4">
+                <!-- Web3Forms Hidden Fields -->
+                <input type="hidden" name="access_key" value="b49113bf-ecdd-48d0-841b-3bd892a7df52">
+                <input type="hidden" name="subject" value="طلب جديد من متجر Variteks Algeria">
+                <input type="hidden" name="from_name" value="متجر Variteks Algeria">
+                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+                <div>
+                    <label for="fullName" class="block text-gray-700 font-bold mb-2">
+                        <i class="fas fa-user text-red-600 ml-1"></i>الاسم الكامل *
+                    </label>
+                    <input type="text" id="fullName" name="fullName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="أدخل اسمك الكامل" required>
+                </div>
+                <div>
+                    <label for="phoneNumber" class="block text-gray-700 font-bold mb-2">
+                        <i class="fas fa-phone text-red-600 ml-1"></i>رقم الهاتف *
+                    </label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="0555 123 456" required>
+                </div>
+                <div>
+                    <label for="address" class="block text-gray-700 font-bold mb-2">
+                        <i class="fas fa-map-marker-alt text-red-600 ml-1"></i>العنوان الكامل *
+                    </label>
+                    <input type="text" id="address" name="address" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="الشارع، الحي، الرقم" required>
+                </div>
+                <div>
+                    <label for="city" class="block text-gray-700 font-bold mb-2">
+                        <i class="fas fa-city text-red-600 ml-1"></i>المدينة *
+                    </label>
+                    <select id="city" name="city" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600" required>
+                        <option value="">اختر المدينة</option>
+                        <option value="الجزائر">الجزائر</option>
+                        <option value="وهران">وهران</option>
+                        <option value="قسنطينة">قسنطينة</option>
+                        <option value="عنابة">عنابة</option>
+                        <option value="بجاية">بجاية</option>
+                        <option value="سطيف">سطيف</option>
+                        <option value="تلمسان">تلمسان</option>
+                        <option value="باتنة">باتنة</option>
+                        <option value="ورقلة">ورقلة</option>
+                        <option value="غرداية">غرداية</option>
+                        <option value="بسكرة">بسكرة</option>
+                        <option value="أخرى">أخرى</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="notes" class="block text-gray-700 font-bold mb-2">
+                        <i class="fas fa-sticky-note text-red-600 ml-1"></i>ملاحظات إضافية
+                    </label>
+                    <textarea id="notes" name="notes" rows="3" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="أي ملاحظات خاصة بالطلب..."></textarea>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h4 class="font-bold text-gray-700 mb-2">
+                        <i class="fas fa-shopping-cart text-red-600 ml-1"></i>ملخص الطلب:
+                    </h4>
+                    <div id="order-summary" class="text-sm text-gray-600">
+                        <!-- سيتم ملؤه بـ JavaScript -->
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-red-700 hover:to-red-800 transition-all duration-300">
+                    <i class="fas fa-paper-plane ml-2"></i>إرسال الطلب
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Success Message Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-lg w-full m-4 text-center">
+            <div class="mb-6">
+                <div class="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-check-circle text-green-500 text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">تم إرسال طلبك بنجاح!</h3>
+                <p class="text-gray-600 mb-4">تم إرسال طلبك إلى متجر Variteks Algeria بنجاح.</p>
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-right">
+                    <h4 class="font-bold text-green-800 mb-2">ماذا بعد؟</h4>
+                    <ul class="text-green-700 text-sm space-y-1">
+                        <li>✅ سيتم مراجعة طلبك خلال 24 ساعة</li>
+                        <li>📞 سيتم التواصل معك لتأكيد الطلب</li>
+                        <li>🚚 ترتيب التوصيل حسب موقعك</li>
+                        <li>💰 الدفع عند الاستلام</li>
+                    </ul>
+                </div>
+            </div>
+            <button id="close-success-button" class="bg-gradient-to-r from-green-600 to-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:from-green-700 hover:to-green-800 transition-all duration-300">
+                <i class="fas fa-thumbs-up ml-2"></i>ممتاز
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Description Modal -->
+    <div id="description-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-lg w-full m-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">وصف المنتج ✨</h3>
+                <button id="close-description-button" class="text-gray-500 hover:text-gray-800 focus:outline-none">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div id="description-content" class="text-gray-700 leading-relaxed max-h-80 overflow-y-auto">
+                <!-- Description will be injected here -->
+                <p>الرجاء الانتظار، يتم إنشاء الوصف...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-8">
+        <div class="container mx-auto px-4">
+            <!-- Logo في Footer -->
+            <div class="mb-4 flex justify-center">
+                <img src="logo/277738148_664779944785657_6678405579310412978_n.png" alt="Variteks Algeria Logo" class="h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300">
+            </div>
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-red-400 mb-2">Variteks Algeria</h3>
+                <p class="text-gray-300 footer-description">منتجات طبية عالية الجودة منذ 1958</p>
+            </div>
+            <div class="border-t border-gray-700 pt-4">
+                <p>&copy; 2024 Variteks Algeria. <span class="all-rights">جميع الحقوق محفوظة</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Buttons -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3">
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/213555002687" target="_blank" class="contact-btn whatsapp-btn group">
+            <i class="fab fa-whatsapp text-2xl"></i>
+            <div class="contact-tooltip">
+                <span class="tooltip-text whatsapp-tooltip-text">WhatsApp</span>
+                <span class="tooltip-number">+213 0555 00 26 87</span>
+            </div>
+        </a>
+
+        <!-- Viber Button -->
+        <a href="viber://chat?number=213555002689" class="contact-btn viber-btn group">
+            <i class="fab fa-viber text-2xl"></i>
+            <div class="contact-tooltip">
+                <span class="tooltip-text viber-tooltip-text">Viber</span>
+                <span class="tooltip-number">+213 0555 00 26 89</span>
+            </div>
+        </a>
+
+        <!-- Back to Top Button -->
+        <button id="back-to-top" class="contact-btn back-to-top-btn opacity-0 invisible">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50 hidden">
+        <div class="text-center">
+            <div class="loading-spinner mx-auto mb-4"></div>
+            <p class="text-gray-600">جاري التحميل...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="fixed top-20 right-4 z-50 space-y-2"></div>
+
+    <!-- Quick View Modal -->
+    <div id="quick-view-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div id="quick-view-content" class="relative max-h-screen overflow-y-auto">
+            <!-- Content will be injected here -->
+        </div>
+        <button onclick="closeQuickView()" class="absolute top-4 right-4 text-white hover:text-gray-300 text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <script>
+        // Web3Forms Configuration
+        const WEB3FORMS_CONFIG = {
+            accessKey: 'b49113bf-ecdd-48d0-841b-3bd892a7df52',
+            apiUrl: 'https://api.web3forms.com/submit',
+            targetEmail: 'jvkhvkhvjh@gmail.com'
+        };
+
+        // Translation System - Safe Implementation
+        let currentLanguage = localStorage.getItem('variteks_language') || 'ar';
+
+        const translations = {
+            ar: {
+                // Navigation
+                home: 'الرئيسية',
+                about: 'نبذة عنا',
+                products: 'المنتجات',
+                contact: 'اتصل بنا',
+                main_menu: 'القائمة الرئيسية',
+
+                // Search
+                search_placeholder: 'ابحث عن المنتجات...',
+
+                // Hero
+                hero_title: 'Vous êtes entre de bonnes mains',
+                hero_subtitle: 'Variteks est une large gamme riche et variée de produits orthopédiques parapharmaceutiques, d\'origine Turque, active dans le commerce médical mondial depuis 1958.',
+                discover_products: 'اكتشف منتجاتنا',
+
+                // Products
+                add_to_cart: 'إضافة إلى السلة',
+                ai_description: 'وصف ذكي',
+                share: 'مشاركة',
+                quick_view: 'عرض سريع',
+                available: 'متوفر',
+                currency: 'دج',
+
+                // Cart
+                shopping_cart: 'سلة المشتريات',
+                cart_empty: 'السلة فارغة',
+                cart_empty_desc: 'لم تقم بإضافة أي منتجات بعد',
+                continue_shopping: 'متابعة التسوق',
+                checkout: 'إتمام الشراء',
+                remove: 'إزالة',
+                quantity: 'الكمية',
+                total: 'الإجمالي',
+
+                // Checkout
+                complete_order: 'إتمام الطلب',
+                full_name: 'الاسم الكامل',
+                phone_number: 'رقم الهاتف',
+                full_address: 'العنوان الكامل',
+                city: 'المدينة',
+                additional_notes: 'ملاحظات إضافية',
+                send_order: 'إرسال الطلب',
+
+                // Cities
+                choose_city: 'اختر المدينة',
+                algiers: 'الجزائر',
+                oran: 'وهران',
+                constantine: 'قسنطينة',
+                annaba: 'عنابة',
+                bejaia: 'بجاية',
+                setif: 'سطيف',
+                tlemcen: 'تلمسان',
+                batna: 'باتنة',
+                ouargla: 'ورقلة',
+                ghardaia: 'غرداية',
+                biskra: 'بسكرة',
+                other: 'أخرى',
+
+                // Success
+                order_sent_success: 'تم إرسال طلبك بنجاح!',
+                order_sent_desc: 'تم إرسال طلبك إلى متجر Variteks Algeria بنجاح.',
+                what_next: 'ماذا بعد؟',
+                excellent: 'ممتاز',
+
+                // About section
+                about_title: 'نبذة عنا',
+                about_description: 'Variteks هي علامة تجارية عالمية في مجال المنتجات الطبية وشبه الصيدلانية، وتعمل منذ عام 1958 لتقديم أفضل المنتجات الأورثوبيدية. نحن نلتزم بالجودة العالية والابتكار لتوفير حلول فعالة لعملائنا في الجزائر.',
+                world_quality: 'جودة عالمية',
+                world_quality_desc: 'منتجات معتمدة دولياً بأعلى معايير الجودة',
+                fast_delivery: 'توصيل سريع',
+                fast_delivery_desc: 'خدمة توصيل سريعة وآمنة لجميع أنحاء الجزائر',
+                support_247: 'دعم 24/7',
+                support_247_desc: 'فريق دعم متخصص متاح على مدار الساعة',
+
+                // Testimonials
+                testimonials_title: 'آراء عملائنا',
+                customer1_name: 'أحمد محمد',
+                customer1_review: 'منتجات عالية الجودة وخدمة ممتازة. أنصح بها بشدة لكل من يحتاج منتجات طبية موثوقة.',
+                customer2_name: 'فاطمة علي',
+                customer2_review: 'التوصيل سريع والمنتجات أصلية. تعاملت معهم عدة مرات وكانت التجربة رائعة في كل مرة.',
+                customer3_name: 'يوسف حسن',
+                customer3_review: 'أسعار معقولة وجودة ممتازة. فريق الدعم متعاون جداً ويساعد في اختيار المنتج المناسب.',
+
+                // Categories
+                all_products: 'جميع المنتجات',
+                variteks2_category: 'Variteks2',
+                variteks_lipo_category: 'Variteks Lipo',
+                variteks_category: 'Variteks',
+
+                // Sorting
+                sort_by: 'ترتيب حسب:',
+                default_sort: 'الافتراضي',
+                price_low_high: 'السعر: من الأقل للأعلى',
+                price_high_low: 'السعر: من الأعلى للأقل',
+                name_sort: 'الاسم: أ-ي',
+                view_label: 'العرض:',
+
+                // Contact
+                contact_title: 'اتصل بنا',
+                get_in_touch: 'تواصل معنا',
+                contact_desc: 'نحن هنا لمساعدتك. تواصل معنا في أي وقت',
+                phone: 'الهاتف',
+                email: 'البريد الإلكتروني',
+                address: 'العنوان',
+                send_message: 'إرسال رسالة',
+                your_name: 'اسمك',
+                your_email: 'بريدك الإلكتروني',
+                your_message: 'رسالتك',
+
+                // Footer
+                footer_desc: 'منتجات طبية عالية الجودة منذ 1958',
+                all_rights: 'جميع الحقوق محفوظة',
+
+                // Contact buttons
+                whatsapp_tooltip: 'WhatsApp',
+                viber_tooltip: 'Viber',
+
+                // Toast messages
+                added_to_cart_msg: 'تم إضافة المنتج إلى السلة',
+                quantity_increased_msg: 'تم زيادة كمية المنتج في السلة',
+                added_to_favorites: 'تمت إضافة المنتج للمفضلة',
+                removed_from_favorites: 'تم إزالة المنتج من المفضلة',
+                link_copied: 'تم نسخ رابط المنتج'
+            },
+            fr: {
+                // Navigation
+                home: 'Accueil',
+                about: 'À propos',
+                products: 'Produits',
+                contact: 'Contact',
+                main_menu: 'Menu principal',
+
+                // Search
+                search_placeholder: 'Rechercher des produits...',
+
+                // Hero
+                hero_title: 'Vous êtes entre de bonnes mains',
+                hero_subtitle: 'Variteks est une large gamme riche et variée de produits orthopédiques parapharmaceutiques, d\'origine Turque, active dans le commerce médical mondial depuis 1958.',
+                discover_products: 'Découvrez nos produits',
+
+                // Products
+                add_to_cart: 'Ajouter au panier',
+                ai_description: 'Description IA',
+                share: 'Partager',
+                quick_view: 'Aperçu rapide',
+                available: 'Disponible',
+                currency: 'DA',
+
+                // Cart
+                shopping_cart: 'Panier d\'achat',
+                cart_empty: 'Panier vide',
+                cart_empty_desc: 'Vous n\'avez ajouté aucun produit encore',
+                continue_shopping: 'Continuer les achats',
+                checkout: 'Finaliser l\'achat',
+                remove: 'Supprimer',
+                quantity: 'Quantité',
+                total: 'Total',
+
+                // Checkout
+                complete_order: 'Finaliser la commande',
+                full_name: 'Nom complet',
+                phone_number: 'Numéro de téléphone',
+                full_address: 'Adresse complète',
+                city: 'Ville',
+                additional_notes: 'Notes supplémentaires',
+                send_order: 'Envoyer la commande',
+
+                // Cities
+                choose_city: 'Choisir la ville',
+                algiers: 'Alger',
+                oran: 'Oran',
+                constantine: 'Constantine',
+                annaba: 'Annaba',
+                bejaia: 'Béjaïa',
+                setif: 'Sétif',
+                tlemcen: 'Tlemcen',
+                batna: 'Batna',
+                ouargla: 'Ouargla',
+                ghardaia: 'Ghardaïa',
+                biskra: 'Biskra',
+                other: 'Autre',
+
+                // Success
+                order_sent_success: 'Votre commande a été envoyée avec succès!',
+                order_sent_desc: 'Votre commande a été envoyée avec succès à Variteks Algeria.',
+                what_next: 'Et après?',
+                excellent: 'Excellent',
+
+                // About section
+                about_title: 'À propos de nous',
+                about_description: 'Variteks est une marque mondiale dans le domaine des produits médicaux et parapharmaceutiques, active depuis 1958 pour fournir les meilleurs produits orthopédiques. Nous nous engageons à la haute qualité et à l\'innovation pour offrir des solutions efficaces à nos clients en Algérie.',
+                world_quality: 'Qualité mondiale',
+                world_quality_desc: 'Produits certifiés internationalement aux plus hauts standards de qualité',
+                fast_delivery: 'Livraison rapide',
+                fast_delivery_desc: 'Service de livraison rapide et sécurisé dans toute l\'Algérie',
+                support_247: 'Support 24/7',
+                support_247_desc: 'Équipe de support spécialisée disponible 24h/24',
+
+                // Testimonials
+                testimonials_title: 'Avis de nos clients',
+                customer1_name: 'Ahmed Mohamed',
+                customer1_review: 'Produits de haute qualité et excellent service. Je le recommande vivement à tous ceux qui ont besoin de produits médicaux fiables.',
+                customer2_name: 'Fatima Ali',
+                customer2_review: 'Livraison rapide et produits authentiques. J\'ai traité avec eux plusieurs fois et l\'expérience était formidable à chaque fois.',
+                customer3_name: 'Youssef Hassan',
+                customer3_review: 'Prix raisonnables et excellente qualité. L\'équipe de support est très coopérative et aide à choisir le bon produit.',
+
+                // Categories
+                all_products: 'Tous les produits',
+                variteks2_category: 'Variteks2',
+                variteks_lipo_category: 'Variteks Lipo',
+                variteks_category: 'Variteks',
+
+                // Sorting
+                sort_by: 'Trier par:',
+                default_sort: 'Par défaut',
+                price_low_high: 'Prix: croissant',
+                price_high_low: 'Prix: décroissant',
+                name_sort: 'Nom: A-Z',
+                view_label: 'Affichage:',
+
+                // Contact
+                contact_title: 'Contactez-nous',
+                get_in_touch: 'Entrez en contact',
+                contact_desc: 'Nous sommes là pour vous aider. Contactez-nous à tout moment',
+                phone: 'Téléphone',
+                email: 'E-mail',
+                address: 'Adresse',
+                send_message: 'Envoyer le message',
+                your_name: 'Votre nom',
+                your_email: 'Votre e-mail',
+                your_message: 'Votre message',
+
+                // Footer
+                footer_desc: 'Produits médicaux de haute qualité depuis 1958',
+                all_rights: 'Tous droits réservés',
+
+                // Contact buttons
+                whatsapp_tooltip: 'WhatsApp',
+                viber_tooltip: 'Viber',
+
+                // Contact buttons
+                whatsapp_tooltip: 'WhatsApp',
+                viber_tooltip: 'Viber',
+
+                // Toast messages
+                added_to_cart_msg: 'Produit ajouté au panier',
+                quantity_increased_msg: 'Quantité du produit augmentée dans le panier',
+                added_to_favorites: 'Produit ajouté aux favoris',
+                removed_from_favorites: 'Produit retiré des favoris',
+                link_copied: 'Lien du produit copié'
+            }
+        };
+
+        // Translation Functions - Safe Implementation
+        function t(key) {
+            return translations[currentLanguage] && translations[currentLanguage][key]
+                ? translations[currentLanguage][key]
+                : translations['ar'][key] || key;
+        }
+
+        function updateLanguageButton() {
+            const langBtn = document.querySelector('.lang-btn');
+            if (langBtn) {
+                const span = langBtn.querySelector('span');
+                if (span) {
+                    span.textContent = currentLanguage.toUpperCase();
+                }
+            }
+        }
+
+        function translateStaticElements() {
+            // Navigation links
+            const navLinks = {
+                'a[href="#home"] span': 'home',
+                'a[href="#about"] span': 'about',
+                'a[href="#products"] span': 'products',
+                'a[href="#contact"] span': 'contact'
+            };
+
+            Object.entries(navLinks).forEach(([selector, key]) => {
+                const element = document.querySelector(selector);
+                if (element) element.textContent = t(key);
+            });
+
+            // Mobile menu
+            const mobileMenuTitle = document.querySelector('.mobile-menu-header h3');
+            if (mobileMenuTitle) mobileMenuTitle.textContent = t('main_menu');
+
+            // Search placeholders
+            const searchInputs = document.querySelectorAll('#search-input, #header-search');
+            searchInputs.forEach(input => {
+                if (input) input.placeholder = t('search_placeholder');
+            });
+
+            // Hero section
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const discoverBtn = document.querySelector('a[href="#products"]');
+
+            if (heroTitle) heroTitle.textContent = t('hero_title');
+            if (heroSubtitle) heroSubtitle.textContent = t('hero_subtitle');
+            if (discoverBtn) discoverBtn.textContent = t('discover_products');
+
+            // About section
+            const aboutTitle = document.querySelector('#about h2');
+            if (aboutTitle) aboutTitle.textContent = t('about_title');
+
+            // About description
+            const aboutDesc = document.querySelector('#about p');
+            if (aboutDesc) aboutDesc.textContent = t('about_description');
+
+            // Feature cards in about section
+            const featureCards = document.querySelectorAll('.feature-card');
+            if (featureCards.length >= 3) {
+                // First card - World Quality
+                const card1Title = featureCards[0].querySelector('h3');
+                const card1Desc = featureCards[0].querySelector('p');
+                if (card1Title) card1Title.textContent = t('world_quality');
+                if (card1Desc) card1Desc.textContent = t('world_quality_desc');
+
+                // Second card - Fast Delivery
+                const card2Title = featureCards[1].querySelector('h3');
+                const card2Desc = featureCards[1].querySelector('p');
+                if (card2Title) card2Title.textContent = t('fast_delivery');
+                if (card2Desc) card2Desc.textContent = t('fast_delivery_desc');
+
+                // Third card - 24/7 Support
+                const card3Title = featureCards[2].querySelector('h3');
+                const card3Desc = featureCards[2].querySelector('p');
+                if (card3Title) card3Title.textContent = t('support_247');
+                if (card3Desc) card3Desc.textContent = t('support_247_desc');
+            }
+
+            // Products section title
+            const productsTitle = document.querySelector('#products h2');
+            if (productsTitle) productsTitle.textContent = t('products');
+
+            // Category tabs
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            if (categoryTabs.length >= 4) {
+                if (categoryTabs[0]) categoryTabs[0].textContent = `${t('all_products')} (79)`;
+                if (categoryTabs[1]) categoryTabs[1].textContent = `${t('variteks2_category')} (63)`;
+                if (categoryTabs[2]) categoryTabs[2].textContent = `${t('variteks_lipo_category')} (14)`;
+                if (categoryTabs[3]) categoryTabs[3].textContent = `${t('variteks_category')} (2)`;
+            }
+
+            // Sort options
+            const sortLabel = document.querySelector('label[for="sort-options"]');
+            if (sortLabel) sortLabel.textContent = t('sort_by');
+
+            const sortOptions = document.querySelectorAll('#sort-options option');
+            if (sortOptions.length >= 5) {
+                if (sortOptions[0]) sortOptions[0].textContent = t('default_sort');
+                if (sortOptions[1]) sortOptions[1].textContent = t('price_low_high');
+                if (sortOptions[2]) sortOptions[2].textContent = t('price_high_low');
+                if (sortOptions[3]) sortOptions[3].textContent = t('name_sort');
+            }
+
+            const viewLabel = document.querySelector('.view-label');
+            if (viewLabel) viewLabel.textContent = t('view_label');
+
+            // Contact section
+            const contactTitle = document.querySelector('#contact h2');
+            if (contactTitle) contactTitle.textContent = t('contact_title');
+
+            // Contact info card title
+            const contactInfoTitle = document.querySelector('#contact .bg-red-600 h3');
+            if (contactInfoTitle) contactInfoTitle.textContent = t('get_in_touch');
+
+            // Testimonials section
+            const testimonialsTitle = document.querySelector('.testimonials-title');
+            if (testimonialsTitle) testimonialsTitle.textContent = t('testimonials_title');
+
+            // Customer testimonials
+            const customer1Name = document.querySelector('.customer1-name');
+            const customer1Review = document.querySelector('.customer1-review');
+            if (customer1Name) customer1Name.textContent = t('customer1_name');
+            if (customer1Review) customer1Review.textContent = `"${t('customer1_review')}"`;
+
+            const customer2Name = document.querySelector('.customer2-name');
+            const customer2Review = document.querySelector('.customer2-review');
+            if (customer2Name) customer2Name.textContent = t('customer2_name');
+            if (customer2Review) customer2Review.textContent = `"${t('customer2_review')}"`;
+
+            const customer3Name = document.querySelector('.customer3-name');
+            const customer3Review = document.querySelector('.customer3-review');
+            if (customer3Name) customer3Name.textContent = t('customer3_name');
+            if (customer3Review) customer3Review.textContent = `"${t('customer3_review')}"`;
+
+            // Contact buttons tooltips
+            const whatsappTooltip = document.querySelector('.whatsapp-tooltip-text');
+            const viberTooltip = document.querySelector('.viber-tooltip-text');
+            if (whatsappTooltip) whatsappTooltip.textContent = t('whatsapp_tooltip');
+            if (viberTooltip) viberTooltip.textContent = t('viber_tooltip');
+
+            // Footer
+            const footerDesc = document.querySelector('.footer-description');
+            if (footerDesc) footerDesc.textContent = t('footer_desc');
+
+            const allRights = document.querySelector('.all-rights');
+            if (allRights) allRights.textContent = t('all_rights');
+
+            // Cart modal
+            const cartTitle = document.querySelector('#cart-modal h2');
+            const emptyCartTitle = document.querySelector('#empty-cart h3');
+            const emptyCartDesc = document.querySelector('#empty-cart p');
+            const continueBtn = document.querySelector('#continue-shopping');
+            const checkoutBtn = document.querySelector('#checkout-button');
+
+            if (cartTitle) cartTitle.textContent = t('shopping_cart');
+            if (emptyCartTitle) emptyCartTitle.textContent = t('cart_empty');
+            if (emptyCartDesc) emptyCartDesc.textContent = t('cart_empty_desc');
+            if (continueBtn) continueBtn.textContent = t('continue_shopping');
+            if (checkoutBtn) checkoutBtn.textContent = t('checkout');
+
+            // Checkout modal
+            const checkoutTitle = document.querySelector('#checkout-modal h2');
+            if (checkoutTitle) checkoutTitle.textContent = t('complete_order');
+
+            // Form labels
+            const formLabels = [
+                { selector: 'label[for="fullName"]', key: 'full_name', icon: 'fas fa-user' },
+                { selector: 'label[for="phoneNumber"]', key: 'phone_number', icon: 'fas fa-phone' },
+                { selector: 'label[for="address"]', key: 'full_address', icon: 'fas fa-map-marker-alt' },
+                { selector: 'label[for="city"]', key: 'city', icon: 'fas fa-city' },
+                { selector: 'label[for="notes"]', key: 'additional_notes', icon: 'fas fa-sticky-note' }
+            ];
+
+            formLabels.forEach(({ selector, key, icon }) => {
+                const label = document.querySelector(selector);
+                if (label) {
+                    const isRequired = key !== 'additional_notes';
+                    label.innerHTML = `<i class="${icon} text-red-600 ml-1"></i>${t(key)}${isRequired ? ' *' : ''}`;
+                }
+            });
+
+            // Form placeholders
+            const placeholders = [
+                { id: 'fullName', key: 'full_name' },
+                { id: 'phoneNumber', key: 'phone_number' },
+                { id: 'address', key: 'full_address' },
+                { id: 'notes', key: 'additional_notes' }
+            ];
+
+            placeholders.forEach(({ id, key }) => {
+                const input = document.getElementById(id);
+                if (input) input.placeholder = t(key);
+            });
+
+            // City options
+            const citySelect = document.getElementById('city');
+            if (citySelect) {
+                const cities = [
+                    'choose_city', 'algiers', 'oran', 'constantine', 'annaba',
+                    'bejaia', 'setif', 'tlemcen', 'batna', 'ouargla', 'ghardaia', 'biskra', 'other'
+                ];
+
+                cities.forEach((cityKey, index) => {
+                    const option = citySelect.options[index];
+                    if (option) option.textContent = t(cityKey);
+                });
+            }
+
+            // Submit button
+            const submitBtn = document.querySelector('#customer-form button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.innerHTML = `<i class="fas fa-paper-plane ml-2"></i>${t('send_order')}`;
+            }
+
+            // Success modal
+            const successTitle = document.querySelector('#success-modal h3');
+            const successDesc = document.querySelector('#success-modal p');
+            const whatNextTitle = document.querySelector('#success-modal h4');
+            const excellentBtn = document.querySelector('#close-success-button');
+
+            if (successTitle) successTitle.textContent = t('order_sent_success');
+            if (successDesc) successDesc.textContent = t('order_sent_desc');
+            if (whatNextTitle) whatNextTitle.textContent = t('what_next');
+            if (excellentBtn) {
+                excellentBtn.innerHTML = `<i class="fas fa-thumbs-up ml-2"></i>${t('excellent')}`;
+            }
+        }
+
+        function switchLanguage() {
+            currentLanguage = currentLanguage === 'ar' ? 'fr' : 'ar';
+            localStorage.setItem('variteks_language', currentLanguage);
+
+            // Update document direction
+            document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLanguage;
+
+            updateLanguageButton();
+            translateStaticElements();
+
+            // Re-render dynamic content
+            renderProducts();
+            renderCart();
+
+            // Show success message
+            showToast(
+                currentLanguage === 'ar' ? 'تم التبديل إلى العربية' : 'Basculé vers le français',
+                'success'
+            );
+        }
+
+        // Enhanced Header Functionality
+        function setupHeaderInteractions() {
+            const header = document.querySelector('.header-modern');
+            const searchToggle = document.getElementById('search-toggle');
+            const searchBar = document.getElementById('search-bar');
+            const searchClose = document.getElementById('search-close');
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Create mobile menu overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'mobile-menu-overlay';
+            document.body.appendChild(overlay);
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Search functionality
+            if (searchToggle && searchBar && searchClose) {
+                searchToggle.addEventListener('click', () => {
+                    searchBar.classList.toggle('hidden');
+                    if (!searchBar.classList.contains('hidden')) {
+                        document.getElementById('header-search').focus();
+                    }
+                });
+
+                searchClose.addEventListener('click', () => {
+                    searchBar.classList.add('hidden');
+                });
+
+                // Header search integration with main search
+                const headerSearch = document.getElementById('header-search');
+                if (headerSearch) {
+                    headerSearch.addEventListener('input', (e) => {
+                        const searchTerm = e.target.value;
+                        const mainSearch = document.getElementById('search-input');
+                        if (mainSearch) {
+                            mainSearch.value = searchTerm;
+                        }
+                    });
+                }
+            }
+
+    
+
+        // Mobile menu functionality
+            function openMobileMenu() {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                menuButton.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                menuButton.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', openMobileMenu);
+                overlay.addEventListener('click', closeMobileMenu);
+
+                // Mobile menu links
+                document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        closeMobileMenu();
+                    });
+                });
+            }
+
+            // Navigation active state
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+
+            function updateActiveNavLink() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveNavLink);
+            updateActiveNavLink();
+        }
+
+        // Shopping cart functionality
+        const cartButton = document.getElementById('cart-button');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCartButton = document.getElementById('close-cart-button');
+        const checkoutButton = document.getElementById('checkout-button');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartCountSpan = document.getElementById('cart-count');
+        const cartTotalSpan = document.getElementById('cart-total');
+        const productList = document.getElementById('product-list');
+
+        let cart = [];
+        let products = [
+            // منتجات Variteks Lipo - شفط الدهون
+            { id: 1, name: 'Variteks Lipo - صفحة 3', price: 1500, priceMax: 2500, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0003.jpg', category: 'variteks-lipo' },
+            { id: 2, name: 'Variteks Lipo - صفحة 4', price: 3400, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0004.jpg', category: 'variteks-lipo' },
+            { id: 3, name: 'Variteks Lipo - صفحة 5', price: 8200, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0005.jpg', category: 'variteks-lipo' },
+            { id: 4, name: 'Variteks Lipo - صفحة 6', price: 5900, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0006.jpg', category: 'variteks-lipo' },
+            { id: 5, name: 'Variteks Lipo - صفحة 7', price: 6500, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0007.jpg', category: 'variteks-lipo' },
+            { id: 6, name: 'Variteks Lipo - صفحة 8', price: 7200, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0008.jpg', category: 'variteks-lipo' },
+            { id: 7, name: 'Variteks Lipo - صفحة 9', price: 6300, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0009.jpg', category: 'variteks-lipo' },
+            { id: 8, name: 'Variteks Lipo - صفحة 10', price: 7800, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0010.jpg', category: 'variteks-lipo' },
+            { id: 9, name: 'Variteks Lipo - صفحة 11', price: 5600, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0011.jpg', category: 'variteks-lipo' },
+            { id: 10, name: 'Variteks Lipo - صفحة 12', price: 6900, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0012.jpg', category: 'variteks-lipo' },
+            { id: 11, name: 'Variteks Lipo - صفحة 13', price: 7400, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0013.jpg', category: 'variteks-lipo' },
+            { id: 12, name: 'Variteks Lipo - صفحة 14', price: 6100, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0014.jpg', category: 'variteks-lipo' },
+            { id: 13, name: 'Variteks Lipo - صفحة 15', price: 8500, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0015.jpg', category: 'variteks-lipo' },
+            { id: 14, name: 'Variteks Lipo - صفحة 16', price: 7100, image: 'Variteks Lipo/Variteks Lipo 2020 (5)_page-0016.jpg', category: 'variteks-lipo' },
+
+            // منتجات Variteks2 - الكتالوج الرئيسي
+            { id: 15, name: 'Variteks2 - صفحة 4', price: 2800, image: 'variteks2/catalog_page-0004.jpg', category: 'variteks2' },
+            { id: 16, name: 'Variteks2 - صفحة 5', price: 1200, image: 'variteks2/catalog_page-0005.jpg', category: 'variteks2' },
+            { id: 17, name: 'Variteks2 - صفحة 6', price: 1800, image: 'variteks2/catalog_page-0006.jpg', category: 'variteks2' },
+            { id: 18, name: 'Variteks2 - صفحة 7', price: 900, image: 'variteks2/catalog_page-0007.jpg', category: 'variteks2' },
+            { id: 19, name: 'Variteks2 - صفحة 8', price: 4500, image: 'variteks2/catalog_page-0008.jpg', category: 'variteks2' },
+            { id: 20, name: 'Variteks2 - صفحة 9', price: 3500, image: 'variteks2/catalog_page-0009.jpg', category: 'variteks2' },
+            { id: 21, name: 'Variteks2 - صفحة 10', price: 2000, image: 'variteks2/catalog_page-0010.jpg', category: 'variteks2' },
+            { id: 22, name: 'Variteks2 - صفحة 11', price: 1000, image: 'variteks2/catalog_page-0011.jpg', category: 'variteks2' },
+            { id: 23, name: 'Variteks2 - صفحة 12', price: 800, image: 'variteks2/catalog_page-0012.jpg', category: 'variteks2' },
+            { id: 24, name: 'Variteks2 - صفحة 13', price: 3200, image: 'variteks2/catalog_page-0013.jpg', category: 'variteks2' },
+            { id: 25, name: 'Variteks2 - صفحة 14', price: 2600, image: 'variteks2/catalog_page-0014.jpg', category: 'variteks2' },
+            { id: 26, name: 'Variteks2 - صفحة 15', price: 3800, image: 'variteks2/catalog_page-0015.jpg', category: 'variteks2' },
+            { id: 27, name: 'Variteks2 - صفحة 16', price: 2200, image: 'variteks2/catalog_page-0016.jpg', category: 'variteks2' },
+            { id: 28, name: 'Variteks2 - صفحة 17', price: 4100, image: 'variteks2/catalog_page-0017.jpg', category: 'variteks2' },
+            { id: 29, name: 'Variteks2 - صفحة 18', price: 1900, image: 'variteks2/catalog_page-0018.jpg', category: 'variteks2' },
+            { id: 30, name: 'Variteks2 - صفحة 19', price: 3400, image: 'variteks2/catalog_page-0019.jpg', category: 'variteks2' },
+            { id: 31, name: 'Variteks2 - صفحة 20', price: 2900, image: 'variteks2/catalog_page-0020.jpg', category: 'variteks2' },
+            { id: 32, name: 'Variteks2 - صفحة 21', price: 3700, image: 'variteks2/catalog_page-0021.jpg', category: 'variteks2' },
+            { id: 33, name: 'Variteks2 - صفحة 22', price: 2100, image: 'variteks2/catalog_page-0022.jpg', category: 'variteks2' },
+            { id: 34, name: 'Variteks2 - صفحة 23', price: 4200, image: 'variteks2/catalog_page-0023.jpg', category: 'variteks2' },
+            { id: 35, name: 'Variteks2 - صفحة 24', price: 1800, image: 'variteks2/catalog_page-0024.jpg', category: 'variteks2' },
+            { id: 36, name: 'Variteks2 - صفحة 25', price: 3300, image: 'variteks2/catalog_page-0025.jpg', category: 'variteks2' },
+            { id: 37, name: 'Variteks2 - صفحة 26', price: 2500, image: 'variteks2/catalog_page-0026.jpg', category: 'variteks2' },
+            { id: 38, name: 'Variteks2 - صفحة 27', price: 3900, image: 'variteks2/catalog_page-0027.jpg', category: 'variteks2' },
+            { id: 39, name: 'Variteks2 - صفحة 28', price: 2300, image: 'variteks2/catalog_page-0028.jpg', category: 'variteks2' },
+            { id: 40, name: 'Variteks2 - صفحة 29', price: 4000, image: 'variteks2/catalog_page-0029.jpg', category: 'variteks2' },
+            { id: 41, name: 'Variteks2 - صفحة 30', price: 1700, image: 'variteks2/catalog_page-0030.jpg', category: 'variteks2' },
+            { id: 42, name: 'Variteks2 - صفحة 31', price: 3600, image: 'variteks2/catalog_page-0031.jpg', category: 'variteks2' },
+            { id: 43, name: 'Variteks2 - صفحة 32', price: 2700, image: 'variteks2/catalog_page-0032.jpg', category: 'variteks2' },
+            { id: 44, name: 'Variteks2 - صفحة 33', price: 4300, image: 'variteks2/catalog_page-0033.jpg', category: 'variteks2' },
+            { id: 45, name: 'Variteks2 - صفحة 34', price: 2000, image: 'variteks2/catalog_page-0034.jpg', category: 'variteks2' },
+            { id: 46, name: 'Variteks2 - صفحة 35', price: 3800, image: 'variteks2/catalog_page-0035.jpg', category: 'variteks2' },
+            { id: 47, name: 'Variteks2 - صفحة 36', price: 2400, image: 'variteks2/catalog_page-0036.jpg', category: 'variteks2' },
+            { id: 48, name: 'Variteks2 - صفحة 37', price: 4100, image: 'variteks2/catalog_page-0037.jpg', category: 'variteks2' },
+            { id: 49, name: 'Variteks2 - صفحة 38', price: 1900, image: 'variteks2/catalog_page-0038.jpg', category: 'variteks2' },
+            { id: 50, name: 'Variteks2 - صفحة 39', price: 3500, image: 'variteks2/catalog_page-0039.jpg', category: 'variteks2' },
+            { id: 51, name: 'Variteks2 - صفحة 40', price: 2600, image: 'variteks2/catalog_page-0040.jpg', category: 'variteks2' },
+            { id: 52, name: 'Variteks2 - صفحة 41', price: 4400, image: 'variteks2/catalog_page-0041.jpg', category: 'variteks2' },
+            { id: 53, name: 'Variteks2 - صفحة 42', price: 2100, image: 'variteks2/catalog_page-0042.jpg', category: 'variteks2' },
+            { id: 54, name: 'Variteks2 - صفحة 43', price: 3700, image: 'variteks2/catalog_page-0043.jpg', category: 'variteks2' },
+            { id: 55, name: 'Variteks2 - صفحة 44', price: 2800, image: 'variteks2/catalog_page-0044.jpg', category: 'variteks2' },
+            { id: 56, name: 'Variteks2 - صفحة 45', price: 4500, image: 'variteks2/catalog_page-0045.jpg', category: 'variteks2' },
+            { id: 57, name: 'Variteks2 - صفحة 46', price: 2200, image: 'variteks2/catalog_page-0046.jpg', category: 'variteks2' },
+            { id: 58, name: 'Variteks2 - صفحة 47', price: 3900, image: 'variteks2/catalog_page-0047.jpg', category: 'variteks2' },
+            { id: 59, name: 'Variteks2 - صفحة 48', price: 2500, image: 'variteks2/catalog_page-0048.jpg', category: 'variteks2' },
+            { id: 60, name: 'Variteks2 - صفحة 49', price: 4200, image: 'variteks2/catalog_page-0049.jpg', category: 'variteks2' },
+            { id: 61, name: 'Variteks2 - صفحة 50', price: 1800, image: 'variteks2/catalog_page-0050.jpg', category: 'variteks2' },
+            { id: 62, name: 'Variteks2 - صفحة 51', price: 3600, image: 'variteks2/catalog_page-0051.jpg', category: 'variteks2' },
+            { id: 63, name: 'Variteks2 - صفحة 52', price: 2700, image: 'variteks2/catalog_page-0052.jpg', category: 'variteks2' },
+            { id: 64, name: 'Variteks2 - صفحة 53', price: 4300, image: 'variteks2/catalog_page-0053.jpg', category: 'variteks2' },
+            { id: 65, name: 'Variteks2 - صفحة 54', price: 2000, image: 'variteks2/catalog_page-0054.jpg', category: 'variteks2' },
+            { id: 66, name: 'Variteks2 - صفحة 55', price: 3800, image: 'variteks2/catalog_page-0055.jpg', category: 'variteks2' },
+            { id: 67, name: 'Variteks2 - صفحة 56', price: 2400, image: 'variteks2/catalog_page-0056.jpg', category: 'variteks2' },
+            { id: 68, name: 'Variteks2 - صفحة 57', price: 4100, image: 'variteks2/catalog_page-0057.jpg', category: 'variteks2' },
+            { id: 69, name: 'Variteks2 - صفحة 58', price: 1900, image: 'variteks2/catalog_page-0058.jpg', category: 'variteks2' },
+            { id: 70, name: 'Variteks2 - صفحة 59', price: 3500, image: 'variteks2/catalog_page-0059.jpg', category: 'variteks2' },
+            { id: 71, name: 'Variteks2 - صفحة 60', price: 2600, image: 'variteks2/catalog_page-0060.jpg', category: 'variteks2' },
+            { id: 72, name: 'Variteks2 - صفحة 61', price: 4400, image: 'variteks2/catalog_page-0061.jpg', category: 'variteks2' },
+            { id: 73, name: 'Variteks2 - صفحة 62', price: 2100, image: 'variteks2/catalog_page-0062.jpg', category: 'variteks2' },
+            { id: 74, name: 'Variteks2 - صفحة 63', price: 3700, image: 'variteks2/catalog_page-0063.jpg', category: 'variteks2' },
+            { id: 75, name: 'Variteks2 - صفحة 64', price: 2800, image: 'variteks2/catalog_page-0064.jpg', category: 'variteks2' },
+            { id: 76, name: 'Variteks2 - صفحة 65', price: 4500, image: 'variteks2/catalog_page-0065.jpg', category: 'variteks2' },
+            { id: 77, name: 'Variteks2 - صفحة 67', price: 3200, image: 'variteks2/catalog_page-0067.jpg', category: 'variteks2' },
+
+            // منتجات من مجلد Variteks - منتجات إضافية
+            { id: 78, name: 'Variteks - صفحة 68', price: 4600, image: 'variteks/catalog_page-0068.jpg', category: 'variteks' },
+            { id: 79, name: 'Variteks - صفحة 69', price: 3100, image: 'variteks/catalog_page-0069.jpg', category: 'variteks' }
+        ];
+
+        // Loading Skeleton for Products
+        function showProductsSkeleton() {
+            const skeletonHTML = Array(8).fill().map(() => `
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="skeleton h-56 w-full"></div>
+                    <div class="p-6">
+                        <div class="skeleton h-4 w-3/4 mb-2 rounded"></div>
+                        <div class="skeleton h-4 w-1/2 mb-3 rounded"></div>
+                        <div class="skeleton h-6 w-1/3 mb-4 rounded"></div>
+                        <div class="skeleton h-10 w-full mb-2 rounded"></div>
+                        <div class="flex space-x-2 space-x-reverse">
+                            <div class="skeleton h-8 flex-1 rounded"></div>
+                            <div class="skeleton h-8 flex-1 rounded"></div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            productList.innerHTML = skeletonHTML;
+        }
+
+        // Function to render product cards on the page
+        function renderProducts() {
+            // Show loading skeleton first
+            showProductsSkeleton();
+
+            // Simulate loading delay for better UX
+            setTimeout(() => {
+                productList.innerHTML = products.map(product => `
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl group">
+                    <!-- Product Image Container -->
+                    <div class="relative overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x200/ef4444/ffffff?text=Image+Not+Found';">
+
+                        <!-- Category Badge -->
+                        <div class="absolute top-3 right-3">
+                            <span class="category-badge px-3 py-1 text-xs font-bold rounded-full text-white ${getCategoryColor(product.category)}">
+                                ${getCategoryName(product.category)}
+                            </span>
+                        </div>
+
+                        <!-- Quick View Overlay -->
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button onclick="quickView(${product.id})" class="quick-view-btn opacity-0 group-hover:opacity-100 bg-white text-gray-800 px-4 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i class="fas fa-eye ml-2"></i>${t('quick_view')}
+                            </button>
+                        </div>
+
+                        <!-- Favorite Button -->
+                        <button onclick="toggleFavorite(${product.id})" class="absolute top-3 left-3 w-10 h-10 bg-white bg-opacity-80 rounded-full flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors duration-300">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="p-6">
+                        <!-- Product Name -->
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-red-600 transition-colors duration-300">${product.name}</h3>
+
+                        <!-- Rating Stars -->
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm mr-2">(4.8)</span>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="price-container ${product.priceMax ? 'price-range' : ''}">
+                                ${product.priceMax ?
+                                    `<span class="text-xl font-bold text-green-600">${product.price.toLocaleString()} - ${product.priceMax.toLocaleString()}</span>` :
+                                    `<span class="text-2xl font-bold text-red-600">${product.price.toLocaleString()}</span>`
+                                }
+                                <span class="text-gray-500 text-sm">${t('currency')}</span>
+                            </div>
+                            <div class="stock-indicator">
+                                <span class="text-green-600 text-sm font-medium">
+                                    <i class="fas fa-check-circle ml-1"></i>${t('available')}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="space-y-2">
+                            <button onclick="addToCart(${product.id})" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-3 rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <i class="fas fa-shopping-cart ml-2"></i>${t('add_to_cart')}
+                            </button>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button onclick="showProductDescription('${product.name}')" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300">
+                                    <i class="fas fa-robot ml-1"></i>${t('ai_description')}
+                                </button>
+                                <button onclick="shareProduct(${product.id})" class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-2 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300">
+                                    <i class="fas fa-share-alt ml-1"></i>${t('share')}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            }, 800);
+        }
+
+        // Helper functions for product cards
+        function getCategoryColor(category) {
+            switch(category) {
+                case 'variteks2': return 'bg-blue-500';
+                case 'variteks-lipo': return 'bg-purple-500';
+                case 'variteks': return 'bg-green-500';
+                default: return 'bg-gray-500';
+            }
+        }
+
+        function getCategoryName(category) {
+            switch(category) {
+                case 'variteks2': return 'Variteks2';
+                case 'variteks-lipo': return 'Lipo';
+                case 'variteks': return 'Variteks';
+                default: return 'عام';
+            }
+        }
+
+        // Quick View Function
+        function quickView(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                // Create quick view modal content
+                const quickViewContent = `
+                    <div class="flex flex-col md:flex-row max-w-4xl w-full bg-white rounded-xl overflow-hidden">
+                        <div class="md:w-1/2">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-64 md:h-full object-cover">
+                        </div>
+                        <div class="md:w-1/2 p-6">
+                            <div class="mb-4">
+                                <span class="category-badge px-3 py-1 text-xs font-bold rounded-full text-white ${getCategoryColor(product.category)}">
+                                    ${getCategoryName(product.category)}
+                                </span>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800 mb-4">${product.name}</h2>
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-gray-500 mr-2">(4.8) - 127 تقييم</span>
+                            </div>
+                            <div class="text-3xl font-bold text-red-600 mb-4">
+                                ${product.priceMax ?
+                                    `${product.price.toLocaleString()} - ${product.priceMax.toLocaleString()} ${t('currency')}` :
+                                    `${product.price.toLocaleString()} ${t('currency')}`
+                                }
+                            </div>
+                            <p class="text-gray-600 mb-6">منتج طبي عالي الجودة من Variteks، مصمم لتوفير الراحة والدعم المطلوب.</p>
+                            <div class="space-y-3">
+                                <button onclick="addToCart(${product.id}); closeQuickView();" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-3 rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300">
+                                    <i class="fas fa-shopping-cart ml-2"></i>${t('add_to_cart')}
+                                </button>
+                                <button onclick="showProductDescription('${product.name}')" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-3 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300">
+                                    <i class="fas fa-robot ml-2"></i>${t('ai_description')}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                showModal('عرض سريع', quickViewContent);
+            }
+        }
+
+        // Toggle Favorite Function
+        function toggleFavorite(productId) {
+            const button = event.target.closest('button');
+            const icon = button.querySelector('i');
+
+            if (icon.classList.contains('far')) {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                button.classList.add('text-red-500');
+                showToast(t('added_to_favorites'), 'success');
+            } else {
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+                button.classList.remove('text-red-500');
+                showToast(t('removed_from_favorites'), 'info');
+            }
+        }
+
+        // Share Product Function
+        function shareProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (navigator.share) {
+                navigator.share({
+                    title: product.name,
+                    text: `تحقق من هذا المنتج الرائع: ${product.name}`,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const url = window.location.href;
+                navigator.clipboard.writeText(`${product.name} - ${url}`);
+                showToast(t('link_copied'), 'success');
+            }
+        }
+
+        // Toast Notification System
+        function showToast(message, type = 'success') {
+            const toastContainer = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                        type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+
+            toast.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas ${icon} ml-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+
+            toastContainer.appendChild(toast);
+
+            // Show toast
+            setTimeout(() => toast.classList.add('show'), 100);
+
+            // Hide and remove toast
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toastContainer.removeChild(toast), 300);
+            }, 3000);
+        }
+
+        // Modal System
+        function showModal(title, content) {
+            const modal = document.getElementById('quick-view-modal');
+            const modalContent = document.getElementById('quick-view-content');
+
+            modalContent.innerHTML = content;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQuickView() {
+            const modal = document.getElementById('quick-view-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }
+
+        // Web3Forms Email Sending Function
+        async function sendOrderEmail(customerData, cartItems, total) {
+            try {
+                // إنشاء قائمة المنتجات للإيميل
+                const productsList = cartItems.map(item => {
+                    const itemPrice = item.priceMax ?
+                        `${item.price.toLocaleString()} - ${item.priceMax.toLocaleString()}` :
+                        item.price.toLocaleString();
+                    return `- ${item.name} (الكمية: ${item.quantity}) - ${itemPrice} دج`;
+                }).join('\n');
+
+                // إنشاء رقم الطلب الفريد
+                const orderId = 'ORD-' + Date.now();
+                const orderDate = new Date().toLocaleDateString('ar-DZ');
+                const orderTime = new Date().toLocaleTimeString('ar-DZ');
+                const itemsCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+                // إعداد بيانات النموذج لـ Web3Forms
+                const formData = new FormData();
+                formData.append('access_key', WEB3FORMS_CONFIG.accessKey);
+                formData.append('subject', `طلب جديد من متجر Variteks - ${customerData.fullName} - ${orderId}`);
+                formData.append('from_name', 'متجر Variteks Algeria');
+                formData.append('to_email', WEB3FORMS_CONFIG.targetEmail);
+
+                // محتوى الرسالة
+                const emailMessage = `
+🛒 طلب جديد من متجر Variteks Algeria
+
+📋 معلومات العميل:
+👤 الاسم: ${customerData.fullName}
+📞 الهاتف: ${customerData.phoneNumber}
+📍 العنوان: ${customerData.address}
+🏙️ المدينة: ${customerData.city}
+📝 ملاحظات: ${customerData.notes || 'لا توجد ملاحظات'}
+
+🛍️ تفاصيل الطلب:
+${productsList}
+
+💰 الإجمالي: ${total.toLocaleString()} دج
+📦 عدد القطع: ${itemsCount}
+
+📅 تاريخ الطلب: ${orderDate}
+⏰ وقت الطلب: ${orderTime}
+🔢 رقم الطلب: ${orderId}
+
+---
+تم إرسال هذا الطلب تلقائياً من موقع Variteks Algeria
+                `;
+
+                formData.append('message', emailMessage);
+
+                // إرسال الطلب إلى Web3Forms
+                const response = await fetch(WEB3FORMS_CONFIG.apiUrl, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    console.log('تم إرسال الطلب بنجاح:', result);
+                    return true;
+                } else {
+                    console.error('خطأ في إرسال الطلب:', result);
+                    throw new Error(result.message || 'فشل في إرسال الطلب');
+                }
+
+            } catch (error) {
+                console.error('خطأ في إرسال الطلب:', error);
+
+                // إرسال بديل باستخدام mailto
+                const fallbackEmail = createFallbackEmail(customerData, cartItems, total);
+                window.open(fallbackEmail, '_blank');
+
+                return false;
+            }
+        }
+
+        // إنشاء إيميل بديل باستخدام mailto
+        function createFallbackEmail(customerData, cartItems, total) {
+            const orderId = 'ORD-' + Date.now();
+            const subject = encodeURIComponent(`طلب جديد من متجر Variteks - ${customerData.fullName} - ${orderId}`);
+
+            const productsList = cartItems.map(item => {
+                const itemPrice = item.priceMax ?
+                    `${item.price.toLocaleString()} - ${item.priceMax.toLocaleString()}` :
+                    item.price.toLocaleString();
+                return `- ${item.name} (الكمية: ${item.quantity}) - ${itemPrice} دج`;
+            }).join('\n');
+
+            const body = encodeURIComponent(`
+🛒 طلب جديد من متجر Variteks Algeria
+
+📋 معلومات العميل:
+👤 الاسم: ${customerData.fullName}
+📞 الهاتف: ${customerData.phoneNumber}
+📍 العنوان: ${customerData.address}
+🏙️ المدينة: ${customerData.city}
+📝 ملاحظات: ${customerData.notes || 'لا توجد ملاحظات'}
+
+🛍️ تفاصيل الطلب:
+${productsList}
+
+💰 الإجمالي: ${total.toLocaleString()} دج
+📦 عدد القطع: ${cartItems.reduce((sum, item) => sum + item.quantity, 0)}
+
+📅 تاريخ الطلب: ${new Date().toLocaleDateString('ar-DZ')}
+⏰ وقت الطلب: ${new Date().toLocaleTimeString('ar-DZ')}
+🔢 رقم الطلب: ${orderId}
+
+---
+تم إرسال هذا الطلب من موقع Variteks Algeria
+            `);
+
+            return `mailto:${WEB3FORMS_CONFIG.targetEmail}?subject=${subject}&body=${body}`;
+        }
+
+        // Function to add a product to the cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const cartItem = cart.find(item => item.id === productId);
+
+            if (cartItem) {
+                cartItem.quantity++;
+                showToast(t('quantity_increased_msg'), 'success');
+            } else {
+                cart.push({ ...product, quantity: 1 });
+                showToast(t('added_to_cart_msg'), 'success');
+            }
+
+            // Add visual feedback to button
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check ml-2"></i>تمت الإضافة';
+            button.classList.add('bg-green-600');
+            button.classList.remove('bg-gradient-to-r', 'from-red-600', 'to-red-700');
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-600');
+                button.classList.add('bg-gradient-to-r', 'from-red-600', 'to-red-700');
+            }, 2000);
+
+            renderCart();
+        }
+
+        // Function to render the cart in the modal
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-center text-gray-500">سلة المشتريات فارغة.</p>';
+                cartCountSpan.classList.add('hidden');
+            } else {
+                cart.forEach(item => {
+                    total += item.price * item.quantity;
+                    const cartItemEl = document.createElement('div');
+                    cartItemEl.className = 'flex items-center space-x-4 space-x-reverse border-b border-gray-200 pb-4 last:border-b-0';
+                    cartItemEl.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/400x200/ef4444/ffffff?text=Image+Not+Found';">
+                        <div class="flex-1">
+                            <h4 class="font-bold">${item.name}</h4>
+                            <p class="text-gray-500">${item.price.toLocaleString()} دج</p>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="w-8 h-8 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors duration-200">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="w-8 h-8 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors duration-200">+</button>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-red-600 hover:text-red-800 transition-colors duration-200 focus:outline-none">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(cartItemEl);
+                });
+                cartCountSpan.classList.remove('hidden');
+            }
+            cartCountSpan.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartTotalSpan.textContent = `${total.toLocaleString()} دج`;
+        }
+
+        // Function to update item quantity in cart
+        function updateQuantity(productId, change) {
+            const cartItem = cart.find(item => item.id === productId);
+            if (cartItem) {
+                cartItem.quantity += change;
+                if (cartItem.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    renderCart();
+                }
+            }
+        }
+
+        // Function to remove item from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            renderCart();
+        }
+
+        // Checkout and Success Modal functionality
+        const checkoutModal = document.getElementById('checkout-modal');
+        const closeCheckoutButton = document.getElementById('close-checkout-button');
+        const customerForm = document.getElementById('customer-form');
+        const successModal = document.getElementById('success-modal');
+        const closeSuccessButton = document.getElementById('close-success-button');
+
+        cartButton.addEventListener('click', () => {
+            cartModal.classList.remove('hidden');
+            cartModal.classList.add('flex');
+        });
+
+        closeCartButton.addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+            cartModal.classList.remove('flex');
+        });
+        
+        checkoutButton.addEventListener('click', () => {
+            if (cart.length > 0) {
+                cartModal.classList.add('hidden');
+                checkoutModal.classList.remove('hidden');
+                checkoutModal.classList.add('flex');
+                updateOrderSummary(); // تحديث ملخص الطلب
+            } else {
+                showToast("سلة المشتريات فارغة!", 'error');
+            }
+        });
+
+        // دالة تحديث ملخص الطلب في نموذج الطلب
+        function updateOrderSummary() {
+            const orderSummaryElement = document.getElementById('order-summary');
+            if (orderSummaryElement) {
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const itemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+                const summaryHTML = `
+                    <div class="flex justify-between items-center mb-2">
+                        <span>عدد القطع:</span>
+                        <span class="font-bold">${itemsCount}</span>
+                    </div>
+                    <div class="flex justify-between items-center text-lg">
+                        <span>الإجمالي:</span>
+                        <span class="font-bold text-red-600">${total.toLocaleString()} دج</span>
+                    </div>
+                `;
+
+                orderSummaryElement.innerHTML = summaryHTML;
+            }
+        }
+
+        closeCheckoutButton.addEventListener('click', () => {
+            checkoutModal.classList.add('hidden');
+            checkoutModal.classList.remove('flex');
+        });
+
+        customerForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent form from submitting normally
+
+            // جمع بيانات النموذج
+            const formData = new FormData(customerForm);
+            const customerData = Object.fromEntries(formData.entries());
+
+            console.log('بيانات العميل:', customerData);
+            console.log('عناصر السلة:', cart);
+
+            // إظهار رسالة التحميل
+            showLoading();
+
+            try {
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+                // إرسال الطلب بالإيميل
+                const emailSent = await sendOrderEmail(customerData, cart, total);
+
+                hideLoading();
+
+                // مسح النموذج والسلة
+                customerForm.reset();
+                cart = [];
+                renderCart();
+                checkoutModal.classList.add('hidden');
+                successModal.classList.remove('hidden');
+                successModal.classList.add('flex');
+
+                if (emailSent) {
+                    showToast('تم إرسال طلبك بنجاح! سيتم التواصل معك قريباً', 'success');
+                } else {
+                    showToast('تم فتح تطبيق البريد الإلكتروني لإرسال الطلب', 'info');
+                }
+
+            } catch (error) {
+                hideLoading();
+                showToast('حدث خطأ في إرسال الطلب. يرجى المحاولة مرة أخرى', 'error');
+                console.error('خطأ في إرسال الطلب:', error);
+            }
+        });
+
+        closeSuccessButton.addEventListener('click', () => {
+            successModal.classList.add('hidden');
+            successModal.classList.remove('flex');
+        });
+
+        // Hide modals when clicking outside
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.classList.add('hidden');
+                cartModal.classList.remove('flex');
+            }
+        });
+        checkoutModal.addEventListener('click', (e) => {
+            if (e.target === checkoutModal) {
+                checkoutModal.classList.add('hidden');
+                checkoutModal.classList.remove('flex');
+            }
+        });
+
+        // Gemini API Feature
+        const descriptionModal = document.getElementById('description-modal');
+        const closeDescriptionButton = document.getElementById('close-description-button');
+        const descriptionContent = document.getElementById('description-content');
+
+        // Function to show the description modal and generate text
+        async function showProductDescription(productName) {
+            descriptionModal.classList.remove('hidden');
+            descriptionModal.classList.add('flex');
+            descriptionContent.innerHTML = `<div class="flex justify-center items-center h-full"><i class="fas fa-spinner fa-spin text-4xl text-red-600"></i></div><p class="text-center mt-4">الرجاء الانتظار، يتم إنشاء الوصف...</p>`;
+
+            // Gemini API call logic
+            const prompt = `اكتب وصفًا تسويقيًا قصيرًا ومقنعًا وموجهًا للجمهور الجزائري للمنتج التالي: ${productName}. استخدم اللغة العربية الفصحى`;
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }],
+                generationConfig: {
+                    responseMimeType: "text/plain",
+                }
+            };
+            
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    descriptionContent.innerText = text;
+                } else {
+                    descriptionContent.innerText = 'عذرًا، حدث خطأ أثناء إنشاء الوصف. يرجى المحاولة مرة أخرى.';
+                }
+            } catch (error) {
+                console.error('Error fetching data from Gemini API:', error);
+                descriptionContent.innerText = 'عذرًا، حدث خطأ في الاتصال. يرجى التحقق من اتصالك بالإنترنت.';
+            }
+        }
+        
+        closeDescriptionButton.addEventListener('click', () => {
+            descriptionModal.classList.add('hidden');
+            descriptionModal.classList.remove('flex');
+        });
+        
+        descriptionModal.addEventListener('click', (e) => {
+            if (e.target === descriptionModal) {
+                descriptionModal.classList.add('hidden');
+                descriptionModal.classList.remove('flex');
+            }
+        });
+
+        // Counter Animation for Statistics
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const increment = target / 100;
+                        let current = 0;
+
+                        const updateCounter = () => {
+                            if (current < target) {
+                                current += increment;
+                                counter.textContent = Math.floor(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target;
+                            }
+                        };
+                        updateCounter();
+                        observer.unobserve(counter);
+                    }
+                });
+            });
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // Search and Filter Functionality
+        function setupSearchAndFilter() {
+            const searchInput = document.getElementById('search-input');
+            const categoryFilter = document.getElementById('category-filter');
+            const priceFilter = document.getElementById('price-filter');
+            const noResults = document.getElementById('no-results');
+
+            function filterProducts() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedCategory = categoryFilter.value;
+                const selectedPriceRange = priceFilter.value;
+
+                let filteredProducts = products.filter(product => {
+                    // Search filter
+                    const matchesSearch = product.name.toLowerCase().includes(searchTerm);
+
+                    // Category filter (enhanced)
+                    let matchesCategory = true;
+                    if (selectedCategory) {
+                        matchesCategory = product.category === selectedCategory;
+                    }
+
+                    // Price filter
+                    let matchesPrice = true;
+                    if (selectedPriceRange) {
+                        const minPrice = product.price;
+                        const maxPrice = product.priceMax || product.price;
+
+                        if (selectedPriceRange === '0-2000' && minPrice >= 2000) matchesPrice = false;
+                        if (selectedPriceRange === '2000-5000' && (maxPrice < 2000 || minPrice >= 5000)) matchesPrice = false;
+                        if (selectedPriceRange === '5000-10000' && (maxPrice < 5000 || minPrice >= 10000)) matchesPrice = false;
+                        if (selectedPriceRange === '10000+' && maxPrice < 10000) matchesPrice = false;
+                    }
+
+                    return matchesSearch && matchesCategory && matchesPrice;
+                });
+
+                // Render filtered products
+                if (filteredProducts.length === 0) {
+                    productList.innerHTML = '';
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                    productList.innerHTML = filteredProducts.map(product => `
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x200/ef4444/ffffff?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">${product.name}</h3>
+                                <p class="text-gray-600 mb-4">${product.price.toLocaleString()} دج</p>
+                                <div class="flex space-x-2 space-x-reverse">
+                                    <button onclick="addToCart(${product.id})" class="flex-1 bg-red-600 text-white font-bold py-2 rounded-lg hover:bg-red-700 transition-colors duration-300">
+                                        إضافة إلى السلة
+                                    </button>
+                                    <button onclick="showProductDescription('${product.name}')" class="flex-1 bg-green-500 text-white font-bold py-2 rounded-lg hover:bg-green-600 transition-colors duration-300">
+                                        وصف بالذكاء الاصطناعي ✨
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            searchInput.addEventListener('input', filterProducts);
+            categoryFilter.addEventListener('change', filterProducts);
+            priceFilter.addEventListener('change', filterProducts);
+        }
+
+        // Back to Top Button
+        function setupBackToTop() {
+            const backToTopButton = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                } else {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Loading Overlay
+        function showLoading() {
+            document.getElementById('loading-overlay').classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            document.getElementById('loading-overlay').classList.add('hidden');
+        }
+
+        // Enhanced Product Description with Loading
+        async function showProductDescription(productName) {
+            descriptionModal.classList.remove('hidden');
+            descriptionModal.classList.add('flex');
+            showLoading();
+
+            // Simulate loading delay for better UX
+            setTimeout(async () => {
+                hideLoading();
+                descriptionContent.innerHTML = `<div class="flex justify-center items-center h-full"><i class="fas fa-spinner fa-spin text-4xl text-red-600"></i></div><p class="text-center mt-4">الرجاء الانتظار، يتم إنشاء الوصف...</p>`;
+
+                // Gemini API call logic (same as before)
+                const prompt = `اكتب وصفًا تسويقيًا قصيرًا ومقنعًا وموجهًا للجمهور الجزائري للمنتج التالي: ${productName}. استخدم اللغة العربية الفصحى`;
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: prompt }] }],
+                    generationConfig: {
+                        responseMimeType: "text/plain",
+                    }
+                };
+
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        descriptionContent.innerText = text;
+                    } else {
+                        descriptionContent.innerText = 'عذرًا، حدث خطأ أثناء إنشاء الوصف. يرجى المحاولة مرة أخرى.';
+                    }
+                } catch (error) {
+                    console.error('Error fetching data from Gemini API:', error);
+                    descriptionContent.innerText = 'عذرًا، حدث خطأ في الاتصال. يرجى التحقق من اتصالك بالإنترنت.';
+                }
+            }, 500);
+        }
+
+        // Smooth Scrolling for Navigation Links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Add to Cart with Animation
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const cartItem = cart.find(item => item.id === productId);
+
+            // Add visual feedback
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
+            button.classList.add('bg-green-600');
+            button.classList.remove('bg-red-600');
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-600');
+                button.classList.add('bg-red-600');
+            }, 1500);
+
+            if (cartItem) {
+                cartItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            renderCart();
+        }
+
+        // Category Tabs Functionality
+        function setupCategoryTabs() {
+            const tabs = document.querySelectorAll('.category-tab');
+            const categoryFilter = document.getElementById('category-filter');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+
+                    // Get category from tab id
+                    const tabId = tab.id;
+                    let category = '';
+                    if (tabId === 'tab-variteks2') category = 'variteks2';
+                    else if (tabId === 'tab-variteks-lipo') category = 'variteks-lipo';
+                    else if (tabId === 'tab-variteks') category = 'variteks';
+
+                    // Update filter dropdown
+                    categoryFilter.value = category;
+
+                    // Filter products
+                    filterProductsByCategory(category);
+                });
+            });
+        }
+
+        // Enhanced filter function for tabs
+        function filterProductsByCategory(selectedCategory) {
+            const noResults = document.getElementById('no-results');
+
+            let filteredProducts = products;
+            if (selectedCategory) {
+                filteredProducts = products.filter(product => product.category === selectedCategory);
+            }
+
+            // Render filtered products
+            if (filteredProducts.length === 0) {
+                productList.innerHTML = '';
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                productList.innerHTML = filteredProducts.map(product => `
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x200/ef4444/ffffff?text=Image+Not+Found';">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">${product.name}</h3>
+                            <p class="text-gray-600 mb-4">${product.price.toLocaleString()} دج</p>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button onclick="addToCart(${product.id})" class="flex-1 bg-red-600 text-white font-bold py-2 rounded-lg hover:bg-red-700 transition-colors duration-300">
+                                    إضافة إلى السلة
+                                </button>
+                                <button onclick="showProductDescription('${product.name}')" class="flex-1 bg-green-500 text-white font-bold py-2 rounded-lg hover:bg-green-600 transition-colors duration-300">
+                                    وصف بالذكاء الاصطناعي ✨
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Sort and View Functions
+        function setupSortAndView() {
+            const sortSelect = document.getElementById('sort-options');
+            const gridViewBtn = document.getElementById('grid-view');
+            const listViewBtn = document.getElementById('list-view');
+            const productList = document.getElementById('product-list');
+
+            // Sort functionality
+            sortSelect.addEventListener('change', () => {
+                const sortValue = sortSelect.value;
+                let sortedProducts = [...products];
+
+                switch(sortValue) {
+                    case 'price-low':
+                        sortedProducts.sort((a, b) => a.price - b.price);
+                        break;
+                    case 'price-high':
+                        sortedProducts.sort((a, b) => (b.priceMax || b.price) - (a.priceMax || a.price));
+                        break;
+                    case 'name':
+                        sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+                        break;
+                    case 'category':
+                        sortedProducts.sort((a, b) => a.category.localeCompare(b.category));
+                        break;
+                    default:
+                        // Keep original order
+                        break;
+                }
+
+                products = sortedProducts;
+                renderProducts();
+            });
+
+            // View toggle functionality
+            gridViewBtn.addEventListener('click', () => {
+                gridViewBtn.classList.add('active');
+                listViewBtn.classList.remove('active');
+                document.body.classList.remove('list-view');
+                productList.className = 'products-grid';
+            });
+
+            listViewBtn.addEventListener('click', () => {
+                listViewBtn.classList.add('active');
+                gridViewBtn.classList.remove('active');
+                document.body.classList.add('list-view');
+                productList.className = 'products-grid';
+            });
+        }
+
+        // Enhanced Search with Highlighting
+        function highlightSearchTerm(text, searchTerm) {
+            if (!searchTerm) return text;
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            return text.replace(regex, '<mark class="bg-yellow-200 px-1 rounded">$1</mark>');
+        }
+
+        // Product Animation on Scroll
+        function setupScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe all product cards
+            document.querySelectorAll('.product-card').forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // Enhanced Filter with Animation
+        function filterProductsWithAnimation(filteredProducts) {
+            const productCards = document.querySelectorAll('.product-card');
+
+            // Fade out current products
+            productCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+            });
+
+            // Wait for fade out, then render new products
+            setTimeout(() => {
+                renderFilteredProducts(filteredProducts);
+
+                // Fade in new products
+                setTimeout(() => {
+                    document.querySelectorAll('.product-card').forEach((card, index) => {
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                            card.classList.add('fade-in');
+                        }, index * 100);
+                    });
+                }, 100);
+            }, 300);
+        }
+
+        // Initialize translation system
+        document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+        document.documentElement.lang = currentLanguage;
+        updateLanguageButton();
+
+        // Initial render
+        renderProducts();
+        renderCart();
+
+        // Apply translations after DOM is ready
+        setTimeout(() => {
+            translateStaticElements();
+        }, 100);
+        animateCounters();
+        setupSearchAndFilter();
+        setupBackToTop();
+        setupSmoothScrolling();
+        setupCategoryTabs();
+        setupSortAndView();
+        setupHeaderInteractions();
+
+        // Setup scroll animations after initial render
+        setTimeout(() => {
+            setupScrollAnimations();
+        }, 1000);
+    </script>
+</body
